@@ -1,0 +1,12 @@
+[
+    {"nome":"Arroz Branco 5 Kg","estoque":15000,"valor":38.99,"peso":5000.0},
+    {"nome":"Feijao Preto 1 Kg","estoque":10000,"valor":9.99,"peso":1000.0},
+    {"nome":"Açucar Cristal 1 Kg","estoque":12000,"valor":3.49,"peso":1000.0},
+    {"nome":"Sal Refinado 1 Kg","estoque":8000,"valor":2.99,"peso":1000.0},
+    {"nome":"Macarrao Espaguete 500g","estoque":20000,"valor":4.50,"peso":500.0},
+    {"nome":"Oleo de Soja 900ml","estoque":7500,"valor":5.99,"peso":900.0},
+    {"nome":"Cafe Torrado e Moido 500g","estoque":6000,"valor":15.49,"peso":500.0},
+    {"nome":"Molho de Tomate 340g","estoque":9000,"valor":4.79,"peso":340.0},
+    {"nome":"Lentilha 1 Kg","estoque":5000,"valor":10.99,"peso":1000.0},
+    {"nome":"Farinha de Trigo 1 Kg","estoque":11000,"valor":3.89,"peso":1000.0}
+]

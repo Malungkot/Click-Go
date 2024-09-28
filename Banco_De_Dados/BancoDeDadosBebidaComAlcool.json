@@ -1,0 +1,12 @@
+[
+    {"nome":"Cerveja Brahma 350ml","estoque":5000,"valor":2.50,"peso":350.0},
+    {"nome":"Vinho Tinto Miolo 750ml","estoque":3000,"valor":49.90,"peso":750.0},
+    {"nome":"Vodka Absolut 1L","estoque":2000,"valor":119.99,"peso":1000.0},
+    {"nome":"Whisky Johnnie Walker Red Label 750ml","estoque":2500,"valor":89.90,"peso":750.0},
+    {"nome":"Cerveja Skol 350ml","estoque":6000,"valor":2.70,"peso":350.0},
+    {"nome":"Cachaça 51 1L","estoque":4000,"valor":24.99,"peso":1000.0},
+    {"nome":"Licor de Amaretto 700ml","estoque":1500,"valor":69.90,"peso":700.0},
+    {"nome":"Vinho Branco Salton 750ml","estoque":1800,"valor":39.90,"peso":750.0},
+    {"nome":"Cerveja Heineken 330ml","estoque":5500,"valor":3.50,"peso":330.0},
+    {"nome":"Espumante Chandon 750ml","estoque":1200,"valor":89.90,"peso":750.0}
+]

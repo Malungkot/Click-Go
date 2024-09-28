@@ -1,0 +1,12 @@
+[
+    {"nome":"Refrigerante Coca-Cola 2L","estoque":7000,"valor":7.99,"peso":2000.0},
+    {"nome":"Suco de Laranja Del Vale 1L","estoque":6000,"valor":5.49,"peso":1000.0},
+    {"nome":"Água Mineral Crystal 1.5L","estoque":10000,"valor":1.99,"peso":1500.0},
+    {"nome":"Chá Verde Lipton 1L","estoque":3000,"valor":4.99,"peso":1000.0},
+    {"nome":"Refrigerante Guaraná Antártica 2L","estoque":8000,"valor":7.49,"peso":2000.0},
+    {"nome":"Suco de Uva Concord 1L","estoque":4500,"valor":6.99,"peso":1000.0},
+    {"nome":"Limonada Natural 1L","estoque":2000,"valor":5.99,"peso":1000.0},
+    {"nome":"Refrigerante Sprite 2L","estoque":6500,"valor":7.49,"peso":2000.0},
+    {"nome":"Água Tônica 1L","estoque":3000,"valor":4.99,"peso":1000.0},
+    {"nome":"Suco de Abacaxi 1L","estoque":4000,"valor":5.49,"peso":1000.0}
+]
