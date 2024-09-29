@@ -6,9 +6,8 @@ import com.mycompany.sistemamercado.Model.*;
 import com.toedter.calendar.JDateChooser;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -40,9 +39,9 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txt_senha = new javax.swing.JPasswordField();
         buttonCriarConta = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         txt_cpf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,9 +70,6 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
-        jCalendar1.setMaxSelectableDate(new java.util.Date(1577678505000L));
-        jCalendar1.setMinSelectableDate(new java.util.Date(-2082829907000L));
-
         txt_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cpfActionPerformed(evt);
@@ -81,6 +77,14 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         jLabel5.setText("CPF");
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.YEAR, -6);
+        cal.add(Calendar.DAY_OF_MONTH, -2);
+        jCalendar1.setMaxSelectableDate(cal.getTime());
+        jCalendar1.setDate(cal.getTime());
+        jCalendar1.setMinSelectableDate(new java.util.Date(-2208973893000L));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,10 +198,13 @@ public class Cadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (EmailJaCadastrado e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CpfEmUso ex) {
-            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CpfEmUso e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());;
+        }
+        catch (CpfInvalido e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_buttonCriarContaActionPerformed
 

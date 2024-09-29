@@ -38,6 +38,7 @@ public class BebidaController {
         BancoDeDados.leBDBebidaSemAlcool(BancoDeDados.getBancoBebidaSemAlcool());
 
         // pega o índice na lista da bebida que está no banco
+        System.out.println(bebidaBanco.getNome());
         for (int i = 0; i <  BebidaSemAlcool.getListaBebidasSemAlcool().size(); i++) {
                 if (bebidaBanco.getNome().equals(BebidaSemAlcool.getListaBebidasSemAlcool().get(i).getNome())) {
                     BebidaSemAlcool.getListaBebidasSemAlcool().set(i, bebidaEdita);

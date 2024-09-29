@@ -1,6 +1,7 @@
 com\mycompany\sistemamercado\View\dashAdmin$3.class
 com\mycompany\sistemamercado\View\dashCliente$5.class
 com\mycompany\sistemamercado\View\Login$4.class
+com\mycompany\sistemamercado\View\Funcionalidades\Cliente\BebidaAlcoolViewCliente$8.class
 com\mycompany\sistemamercado\Controller\AlimentoController.class
 com\mycompany\sistemamercado\Model\ListaCompra.class
 com\mycompany\sistemamercado\View\CadastroAdmin.class
@@ -8,6 +9,7 @@ com\mycompany\sistemamercado\View\dashAdmin.class
 com\mycompany\sistemamercado\View\Funcionalidades\BebidaView$8.class
 com\mycompany\sistemamercado\Excecoes\CpfEmUso.class
 com\mycompany\sistemamercado\View\dashAdmin$6.class
+com\mycompany\sistemamercado\View\Funcionalidades\Cliente\BebidaViewCliente$8.class
 com\mycompany\sistemamercado\View\Funcionalidades\Cliente\BebidaViewCliente$5.class
 com\mycompany\sistemamercado\View\Cadastro$2.class
 com\mycompany\sistemamercado\View\Funcionalidades\Cliente\AlimentoViewCliente$4.class
@@ -37,9 +39,12 @@ com\mycompany\sistemamercado\View\dashCliente$4.class
 com\mycompany\sistemamercado\SistemaMercado.class
 com\mycompany\sistemamercado\View\Login$3.class
 com\mycompany\sistemamercado\View\Cadastro.class
+com\mycompany\sistemamercado\Model\ComVolume.class
+com\mycompany\sistemamercado\Model\ComPeso.class
 com\mycompany\sistemamercado\View\Funcionalidades\BebidaView$5.class
 com\mycompany\sistemamercado\View\CadastroAdmin$4.class
 com\mycompany\sistemamercado\View\Funcionalidades\AlimentoView.class
+com\mycompany\sistemamercado\Model\ComAlcool.class
 com\mycompany\sistemamercado\View\dashAdmin$5.class
 com\mycompany\sistemamercado\View\Funcionalidades\Cliente\BebidaViewCliente$7.class
 com\mycompany\sistemamercado\View\Funcionalidades\AlimentoView$4.class

@@ -8,12 +8,12 @@ import java.util.List;
  * @matricula: 202265552C
  */
 
-public class BebidaComAlcool extends Bebida {
+public class BebidaComAlcool extends Bebida implements ComAlcool {
 
     private static List<BebidaComAlcool> listaBebidasComAlcool = new ArrayList<>();
 
     public BebidaComAlcool(String nome, int quantidade, float valor, int quantidadeML) {
-        super(nome, valor, quantidade, quantidadeML, true);
+        super(nome, valor, quantidade, quantidadeML);
     }
 
     public static List<BebidaComAlcool> getListaBebidasComAlcool() {
@@ -24,19 +24,19 @@ public class BebidaComAlcool extends Bebida {
         BebidaComAlcool.listaBebidasComAlcool = listaBebidasComAlcool;
     }
 
+    
     @Override
     public String getTipo() {
         return "Bebida Alcoólica";
     }
 
-    @Override
-    public boolean getAlcoolica() {
+    public boolean isAlcoolica() {
         return true;
     }
 
     @Override
-    public int getPeso() {
-        return 0; // Bebidas não possuem peso
+    public boolean getAlcoolica() {
+       return true;
     }
 }
 

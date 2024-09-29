@@ -217,10 +217,12 @@ public class CadastroAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (EmailJaCadastrado e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        } catch (IOException ex) {
-            Logger.getLogger(CadastroAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CpfEmUso ex) {
-            Logger.getLogger(CadastroAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CpfEmUso e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CpfInvalido e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_buttonCriarContaActionPerformed
 

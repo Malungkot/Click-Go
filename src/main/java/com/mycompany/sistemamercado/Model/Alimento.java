@@ -10,7 +10,7 @@ import java.util.List;
  * @matricula: 202265552C
  */
 
-public class Alimento implements ComValor {
+public class Alimento implements ComValor, ComPeso {
 
     private static List<Alimento> listaAlimentos = new ArrayList<>();
 
@@ -80,7 +80,7 @@ public class Alimento implements ComValor {
     }
 
     public String toString() {
-        return nome; 
+        return nome;
     }
 
     @Override
@@ -112,15 +112,6 @@ public class Alimento implements ComValor {
             throw new ErroValorNumerico("O peso deve ser maior que zero.");
         }
     }
-
-    @Override
-    public int getQuantidadeML() {
-        return 0; // Alimentos não têm quantidade em ML
-    }
-
-    @Override
-    public boolean getAlcoolica() {
-        return false; // Alimentos não são alcoólicos
-    }
 }
+
 

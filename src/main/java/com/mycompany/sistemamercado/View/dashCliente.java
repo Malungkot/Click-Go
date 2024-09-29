@@ -1,5 +1,7 @@
 package com.mycompany.sistemamercado.View;
 
+import com.mycompany.sistemamercado.Model.Alimento;
+import com.mycompany.sistemamercado.Model.Bebida;
 import com.mycompany.sistemamercado.Model.ComValor;
 import com.mycompany.sistemamercado.Model.ListaCompra;
 import com.mycompany.sistemamercado.Model.Usuario;
@@ -247,49 +249,52 @@ public class dashCliente extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     try {
-        // Calcula o total de itens e o valor total
-        int totalItems = ListaCompra.getListaCompra().size(); // Total de itens na lista
-        float valorTotal = ListaCompra.calcularValorTotal(); // Valor total da lista
-        
-        // Obtém a forma de pagamento selecionada
-        String pagamentoSelecionado = (String) jComboBoxPagamento.getSelectedItem();
-        
-        // Verifica se o primeiro item (ou seja, a opção inválida) foi selecionado
-        if (pagamentoSelecionado.equals("Forma de Pagamento:")) {
-            throw new IllegalArgumentException("Por favor, selecione um método de pagamento válido.");
-        }
-
-        // Aplica as taxas conforme o método de pagamento
-        switch (pagamentoSelecionado) {
-            case "Pix":
-                // Nenhuma taxa adicional
-                break;
-            case "Crédito":
-                valorTotal *= 1.02; // Adiciona 2% ao valor total
-                break;
-            case "Débito":
-                // Nenhuma taxa adicional
-                break;
-            default:
-                throw new IllegalArgumentException("Método de pagamento inválido.");
-        }
-        
-        // Monta a mensagem
-        String mensagem = "Total de itens: " + totalItems + "\n" +
-                          "Valor total: R$ " + String.format("%.2f", valorTotal) + "\n" +
-                          "Forma de pagamento: " + pagamentoSelecionado + "\n" + "Agradecemos por sua compra, volte sempre :)";
-        
-        // Exibe a mensagem
-        JOptionPane.showMessageDialog(this, mensagem, "Resumo da Compra", JOptionPane.INFORMATION_MESSAGE);
-        ListaCompra.clear();
-        this.dispose();
-        Login login = new Login();
-        login.setVisible(true);
-    } catch (IllegalArgumentException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    // Calcula o total de itens e o valor total
+    int totalItems = ListaCompra.getListaCompra().size(); // Total de itens na lista
+    if(totalItems == 0){
+        throw new IllegalArgumentException("Adicione o produto a Lista, para continuar");
     }
+    float valorTotal = ListaCompra.calcularValorTotal(); // Valor total da lista
+    
+    // Obtém a forma de pagamento selecionada
+    String pagamentoSelecionado = (String) jComboBoxPagamento.getSelectedItem();
+    
+    // Verifica se o primeiro item (ou seja, a opção inválida) foi selecionado
+    if (pagamentoSelecionado.equals("Forma de Pagamento:")) {
+        throw new IllegalArgumentException("Por favor, selecione um metodo de pagamento valido.");
+    }
+
+    // Aplica as taxas conforme o método de pagamento
+    switch (pagamentoSelecionado) {
+        case "Pix":
+            break;
+        case "Credito":
+            valorTotal *= 1.02; // Adiciona 2% ao valor total
+            break;
+        case "Debito":
+            break;
+        default:
+            throw new IllegalArgumentException("Método de pagamento inválido.");
+    }    
+    // Monta a mensagem
+    String mensagem = "Total de itens: " + totalItems + "\n" +
+                      "Valor total: R$ " + String.format("%.2f", valorTotal) + "\n" +
+                      "Forma de pagamento: " + pagamentoSelecionado + "\n" + "Agradecemos por sua compra, volte sempre :)";
+    
+    // Exibe a mensagem
+    JOptionPane.showMessageDialog(this, mensagem, "Resumo da Compra", JOptionPane.INFORMATION_MESSAGE);
+    
+    // Limpa a lista de compras e finaliza a janela atual
+    ListaCompra.clear();
+    this.dispose();
+    Login login = new Login();
+    login.setVisible(true);
+    
+} catch (IllegalArgumentException e) {
+    JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+}
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

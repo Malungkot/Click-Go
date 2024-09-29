@@ -1,5 +1,6 @@
 package com.mycompany.sistemamercado.View.Funcionalidades.Cliente;
 
+import com.mycompany.sistemamercado.Controller.BebidaController;
 import com.mycompany.sistemamercado.Model.BancoDeDados;
 import com.mycompany.sistemamercado.Model.BebidaSemAlcool;
 import com.mycompany.sistemamercado.Model.ComValor;
@@ -10,6 +11,8 @@ import com.mycompany.sistemamercado.Model.Usuario;
 import com.mycompany.sistemamercado.View.Login;
 import com.mycompany.sistemamercado.View.dashCliente;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -245,8 +248,20 @@ public class BebidaViewCliente extends javax.swing.JFrame {
 
         if (selectedIndex != -1) { // Verifica se algum alimento foi selecionado
             BebidaSemAlcool bebidaSelecionado = jListBebida.getModel().getElementAt(selectedIndex); // Obtém o alimento selecionado
+            if(bebidaSelecionado.getEstoque() > 0){
             adicionarPedido(bebidaSelecionado);
+            bebidaSelecionado.setEstoque(bebidaSelecionado.getEstoque() - 1);
+                try {
+                    BebidaController.editaBebidaSemAlcool(BebidaSemAlcool.getListaBebidasSemAlcool().get(selectedIndex), bebidaSelecionado);
+                } catch (IOException e) {
+                   JOptionPane.showMessageDialog(null, "ERRO!");
+                }
             preencherJList();
+            }
+            else{
+                 JOptionPane.showMessageDialog(null, "O Produto está sem estoque no momento.");
+                 return;
+             }
         }
 
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
@@ -266,7 +281,8 @@ public class BebidaViewCliente extends javax.swing.JFrame {
             if (selectedIndex != -1) { // Verifica se algum item foi selecionado
                 bebidaBanco = BebidaSemAlcool.getListaBebidasSemAlcool().get(selectedIndex);
                 removerPedido(bebidaBanco);
-                preencherJList();
+                bebidaBanco.setEstoque(bebidaBanco.getEstoque() + 1);
+                BebidaController.editaBebidaSemAlcool(BebidaSemAlcool.getListaBebidasSemAlcool().get(selectedIndex), bebidaBanco);
             } else {
                 JOptionPane.showMessageDialog(null, "Selecione uma bebida para tirar da Lista.");
                 return; // Sai do método se nenhum alimento for selecionado

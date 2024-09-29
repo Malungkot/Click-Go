@@ -1,8 +1,8 @@
 package com.mycompany.sistemamercado.View.Funcionalidades.Cliente;
 
+import com.mycompany.sistemamercado.Controller.AlimentoController;
 import com.mycompany.sistemamercado.Model.Alimento;
 import com.mycompany.sistemamercado.Model.BancoDeDados;
-import com.mycompany.sistemamercado.Model.BebidaSemAlcool;
 import com.mycompany.sistemamercado.Model.ComValor;
 import com.mycompany.sistemamercado.Model.ListaCompra;
 import static com.mycompany.sistemamercado.Model.ListaCompra.adicionarPedido;
@@ -157,9 +157,9 @@ public class AlimentoViewCliente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnRemover)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jToggleButton1.setText("Voltar");
@@ -211,12 +211,12 @@ public class AlimentoViewCliente extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -248,8 +248,19 @@ public class AlimentoViewCliente extends javax.swing.JFrame {
 
         if (selectedIndex != -1) { // Verifica se algum alimento foi selecionado
             Alimento alimentoSelecionado = jListAlimentos.getModel().getElementAt(selectedIndex); // Obtém o alimento selecionado
+            if(alimentoSelecionado.getEstoque() > 0){
             adicionarPedido(alimentoSelecionado);
+            alimentoSelecionado.setEstoque(alimentoSelecionado.getEstoque() - 1);
+                try {
+                    AlimentoController.edita(Alimento.getListaAlimento().get(selectedIndex),alimentoSelecionado);
+                } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao tirar o alimento da Lista");
+                }
             preencherJList();
+            }
+            else{
+              JOptionPane.showMessageDialog(null,"estamos sem o Produto no estoque no momento");  
+            }
         }
         else{
             JOptionPane.showMessageDialog(null,"selecione um alimento valido");
@@ -270,21 +281,23 @@ public class AlimentoViewCliente extends javax.swing.JFrame {
     private void jBtnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRemoverActionPerformed
         // TODO add your handling code here:
         try {
-            BebidaSemAlcool bebidaBanco = null;
+            Alimento alimentoNovo = null;
             BancoDeDados.leBDAlimento(BancoDeDados.getBancoAlimento());
 
             // Pega o alimento que foi selecionado
             int selectedIndex = jListAlimentos.getSelectedIndex(); // Obtém o índice do item selecionado
             if (selectedIndex != -1) { // Verifica se algum item foi selecionado
-                bebidaBanco = BebidaSemAlcool.getListaBebidasSemAlcool().get(selectedIndex);
-                removerPedido(bebidaBanco);
+                alimentoNovo = Alimento.getListaAlimento().get(selectedIndex);
+                removerPedido(alimentoNovo);
+                alimentoNovo.setEstoque(alimentoNovo.getEstoque() + 1);
+                AlimentoController.edita(Alimento.getListaAlimento().get(selectedIndex),alimentoNovo);
                 preencherJList();
             } else {
-                JOptionPane.showMessageDialog(null, "Selecione uma bebida para tirar da Lista.");
+                JOptionPane.showMessageDialog(null, "Selecione um alimento para tirar da Lista.");
                 return; // Sai do método se nenhum alimento for selecionado
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao tirar a bebida da Lista");
+            JOptionPane.showMessageDialog(null, "Erro ao tirar o alimento da Lista");
         }
 
     }//GEN-LAST:event_jBtnRemoverActionPerformed
